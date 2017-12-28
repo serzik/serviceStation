@@ -1,0 +1,87 @@
+<div class="dialog-wrapper">
+  <h2>Редактировать заказ</h2>
+  <mat-icon (click)="closeModal()">close</mat-icon>
+  <form novalidate [formGroup]="form" (ngSubmit)="update(form.value)">
+    <div class="flex">
+      <div class="flex-item">
+        <mat-form-field>
+          <input matInput type="text" placeholder="Автомобиль" formControlName="vehicle">
+          <mat-error *ngIf="form.controls.vehicle.hasError('required')">Обязательное поле</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="flex-item">
+        <mat-form-field>
+          <input matInput type="number" placeholder="Пробег" formControlName="kilometrage">
+          <mat-error *ngIf="form.controls.kilometrage.hasError('required')">Обязательное поле</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="flex-item">
+        <mat-form-field>
+          <input matInput type="text" placeholder="Услуга" formControlName="service">
+          <mat-error *ngIf="form.controls.service.hasError('required')">Обязательное поле</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="digit">1</div>
+      <div class="flex-item">
+        <mat-form-field>
+          <input matInput type="tel" placeholder="Дата" [textMask]="{mask: dateMask}" formControlName="startDate">
+          <mat-error *ngIf="form.controls.startDate.hasError('required')">Обязательное поле</mat-error>
+          <mat-error *ngIf="form.controls.startDate.hasError('pattern')">Дата введена не полностью</mat-error>
+          <mat-error
+            *ngIf="form.controls.startDate.hasError('invalid') && !form.controls.startDate.hasError('pattern')">
+            Такой даты не существует
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="flex-item time">
+        <mat-form-field>
+          <input matInput type="tel" placeholder="Время" [textMask]="{mask: timeMask}" formControlName="startTime">
+          <mat-error *ngIf="form.controls.startTime.hasError('required')">Обязательное поле</mat-error>
+          <mat-error *ngIf="form.controls.startTime.hasError('pattern')">Время введено не полностью</mat-error>
+          <mat-error
+            *ngIf="form.controls.startTime.hasError('invalid') && !form.controls.startTime.hasError('pattern')">
+            Такого времени не существует
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="digit">2</div>
+      <div class="flex-item">
+        <mat-form-field>
+          <input matInput type="tel" placeholder="Дата" [textMask]="{mask: dateMask}" formControlName="endDate">
+          <mat-error *ngIf="form.controls.endDate.hasError('required')">Обязательное поле</mat-error>
+          <mat-error *ngIf="form.controls.endDate.hasError('pattern')">Дата введена не полностью</mat-error>
+          <mat-error *ngIf="form.controls.endDate.hasError('invalid') && !form.controls.endDate.hasError('pattern')">
+            Такой даты не существует
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="flex-item time">
+        <mat-form-field>
+          <input matInput type="tel" placeholder="Время" [textMask]="{mask: timeMask}" formControlName="endTime">
+          <mat-error *ngIf="form.controls.endTime.hasError('required')">Обязательное поле</mat-error>
+          <mat-error *ngIf="form.controls.endTime.hasError('pattern')">Время введено не полностью</mat-error>
+          <mat-error *ngIf="form.controls.endTime.hasError('invalid') && !form.controls.endTime.hasError('pattern')">
+            Такого времени не существует
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-error class="error" *ngIf="dateTime.start.error">Первое время должно быть больше текущего времени минимум на час</mat-error>
+    <mat-error class="error" *ngIf="dateTime.end.error && !dateTime.start.error">Второе время должно быть больше текущего времени
+      больше чем на час
+    </mat-error>
+    <mat-error class="error" *ngIf="dateTime.error">Второе время должно быть позже первого</mat-error>
+    <mat-dialog-actions>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="!form.valid || dateTime.start.error || dateTime.end.error || dateTime.error">
+        Редактировать
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

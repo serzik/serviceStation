@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="table-wrapper">
+    <h1>Список заказов</h1>
+    <mat-table #table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.id}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="vehicle">
+        <mat-header-cell *matHeaderCellDef>Автомобиль</mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.vehicle}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="kilometrage">
+        <mat-header-cell *matHeaderCellDef>Пробег (км)</mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.kilometrage}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="service">
+        <mat-header-cell *matHeaderCellDef>Услуга</mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.service}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Действия</mat-header-cell>
+        <mat-cell *matCellDef="let item">
+          <button mat-button color="primary" [matMenuTriggerFor]="menu">Выбрать</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="edit(item)">Редактировать</button>
+            <button mat-menu-item (click)="send(item)">Отправить</button>
+          </mat-menu>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+  </div>
+</div>

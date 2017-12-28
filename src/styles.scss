@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+@include mat-core();
+$config: mat-typography-config();
+$vehicle-app-primary: mat-palette($mat-teal);
+$vehicle-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$vehicle-app-warn:    mat-palette($mat-red);
+$vehicle-app-theme: mat-light-theme($vehicle-app-primary, $vehicle-app-accent, $vehicle-app-warn);
+@include angular-material-theme($vehicle-app-theme);
+
+body {
+  font-family: mat-font-family($config);
+}
