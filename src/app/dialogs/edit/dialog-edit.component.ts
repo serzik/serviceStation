@@ -90,5 +90,6 @@ export class DialogEditComponent implements OnInit {
 
   public ngOnInit() {
     this.checkDates();
+    document.getElementsByTagName('html')[0].setAttribute('style', 'overflow: hidden');
   }
 }

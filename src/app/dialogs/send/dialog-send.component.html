@@ -1,54 +1,57 @@
 <div class="dialog-wrapper">
-  <h2>Отправить заказ</h2>
-  <mat-icon (click)="closeModal()">close</mat-icon>
-  <h3>Ознакомьтесь с итогом и отправьте его в течении 14:00 минут</h3>
-  <div class="content-wrapper">
-    <div class="info">
-      Автомобиль: {{data.vehicle}} | {{data.kilometrage}} км
-    </div>
-    <div class="info">
-      Услуга: {{data.service}}
-    </div>
-    <div class="info">
-      <span class="mini-header">Выбранное время:</span>
-      <span class="capitalize">&#8212; {{helper.parseDateTime(data.startTime)}}</span><br>
-      <span class="capitalize">&#8212; {{helper.parseDateTime(data.endTime)}}</span>
-    </div>
-    <div class="info price">
-      <span class="mini-header">Денежные поступления:</span>
-      <div class="row">
-        <div class="left">&#8212; Услуга</div>
-        <div class="right">{{data.servicePrice | woodCurrency}}<br></div>
+  <mat-dialog-content>
+    <h2>Отправить заказ</h2>
+    <mat-icon (click)="closeModal()">close</mat-icon>
+    <h3>Ознакомьтесь с итогом и отправьте его в течении <strong>14:00</strong> минут</h3>
+    <div class="content-wrapper">
+      <div class="info">
+        <strong>Автомобиль:</strong> {{data.vehicle}} | {{data.kilometrage}} км
       </div>
-      <div class="row discount">
-        <div class="left">Скидка</div>
-        <div class="right">
-          <mat-chip-list matTooltip="Вы всегда можете дать скидку и повысить шансы, что выберут именно Вас">
-            <mat-chip *ngFor="let chip of chips" class="mat-basic-chip" (click)="select(chip)"
-                      [ngStyle]="{'width': 25 + chip * 0.3 + 'px', 'height': 25 + chip * 0.3 + 'px', 'line-height': 25 + chip * 0.3 + 'px' }"
-                      [ngClass]="{selected: isSelected(chip)}">{{chip}}%
-            </mat-chip>
-          </mat-chip-list>
+      <div class="info">
+        <strong>Услуга:</strong> {{data.service}}
+      </div>
+      <div class="info">
+        <span class="mini-header"><strong>Выбранное время:</strong></span>
+        <span class="capitalize first">&#8212; {{helper.parseDateTime(data.startTime)}}</span><br>
+        <span class="capitalize">&#8212; {{helper.parseDateTime(data.endTime)}}</span>
+      </div>
+      <div class="info price">
+        <span class="mini-header"><strong>Денежные поступления:</strong></span>
+        <div class="row">
+          <div class="left">&#8212; Услуга</div>
+          <div class="right">{{data.servicePrice | woodCurrency}}<br></div>
+        </div>
+        <div class="row discount">
+          <div class="left">&#8212; Скидка</div>
+          <div class="right">
+            <mat-chip-list matTooltip="Вы всегда можете дать скидку и повысить шансы, что выберут именно Вас">
+              <mat-chip *ngFor="let chip of chips" class="mat-basic-chip" (click)="select(chip)"
+                        [ngStyle]="{'width': 25 + chip * 0.3 + 'px', 'height': 25 + chip * 0.3 + 'px', 'line-height': 25 + chip * 0.3 + 'px' }"
+                        [ngClass]="{selected: isSelected(chip)}">{{chip}}%
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+        </div>
+        <div class="row">
+          <div class="left">&#8212; Наценка на запчасти</div>
+          <div class="right">{{data.sparePartPrice | woodCurrency}}</div>
+        </div>
+        <div class="row">
+          <div class="left">&#8212; Комисиия</div>
+          <div class="right">{{data.fee | woodCurrency}}</div>
+        </div>
+        <hr>
+        <div class="row last">
+          <div class="left">Итого:</div>
+          <div class="right">{{total | woodCurrency}}</div>
         </div>
       </div>
-      <div class="row">
-        <div class="left">&#8212; Наценка на запчасти</div>
-        <div class="right">{{data.sparePartPrice | woodCurrency}}</div>
-      </div>
-      <div class="row">
-        <div class="left">&#8212; Комисиия</div>
-        <div class="right">{{data.fee | woodCurrency}}</div>
-      </div>
-      <hr>
-      <div class="row last">
-        <div class="left">Итого:</div>
-        <div class="right">{{total | woodCurrency}}</div>
-      </div>
+      <mat-error class="error" *ngIf="error">Необходимо согласиться с условиями Соглашения</mat-error>
+      <mat-dialog-actions>
+        <mat-checkbox color="primary" [(ngModel)]="agreement" (change)="agree()">Я согласен с условиями Соглашения
+        </mat-checkbox>
+        <button mat-raised-button color="primary" (click)="send()">Отправить</button>
+      </mat-dialog-actions>
     </div>
-    <mat-error class="error" *ngIf="error">Необходимо согласиться с условиями Соглашения</mat-error>
-    <mat-dialog-actions>
-      <mat-checkbox color="primary" [(ngModel)]="agreement" (change)="agree()">Я согласен с условиями Соглашения</mat-checkbox>
-      <button mat-raised-button color="primary" (click)="send()">Отправить</button>
-    </mat-dialog-actions>
-  </div>
+  </mat-dialog-content>
 </div>

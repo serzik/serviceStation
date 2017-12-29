@@ -20,6 +20,7 @@ export class DialogSendComponent {
               @Inject(MAT_DIALOG_DATA) public data: any,
               private service: RequestService,
               public helper: Helper) {
+    document.getElementsByTagName('html')[0].setAttribute('style', 'overflow: hidden');
     this.selected = data.discount;
   }
 

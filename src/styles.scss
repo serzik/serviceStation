@@ -9,4 +9,29 @@ $vehicle-app-theme: mat-light-theme($vehicle-app-primary, $vehicle-app-accent, $
 
 body {
   font-family: mat-font-family($config);
+
+  .cdk-overlay-pane {
+    max-width: 100vw !important;
+  }
+
+  h2 {
+    font-weight: 500;
+  }
+
+  .mat-dialog-container {
+    padding: 0 24px !important;
+  }
+
+  mat-dialog-content {
+    max-height: 100vh !important;
+    padding: 0 24px !important;
+  }
+
+  .mat-dialog-actions:last-child {
+    margin-bottom: 10px !important;
+  }
+
+  .mat-checkbox-layout .mat-checkbox-label {
+    line-height: 23px !important;
+  }
 }

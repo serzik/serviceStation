@@ -1,24 +1,26 @@
 .dialog-wrapper {
   position: relative;
-  margin-bottom: 10px;
 
   form {
     margin-right: -20px;
   }
 
   h2 {
-    margin-top: 0;
-    margin-bottom: 1.5em;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    color: #000000;
+    display: inline-block;
   }
 
   mat-icon {
-    position: absolute;
-    top: -0.2em;
-    right: -0.2em;
+    display: inline-block;
     width: 1em;
     font-size: 2.5em;
-    height: 1em;
     cursor: pointer;
+    float: right;
+    position: relative;
+    right: -0.5em;
+    top: 0.1em;
   }
 
   mat-form-field {
@@ -45,6 +47,10 @@
 
   button {
     margin-right: 20px;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    padding: 6px 17px 4px;
   }
 
   .error {
@@ -58,7 +64,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 550px) {
   .dialog-wrapper .flex {
     flex-wrap: wrap;
   }
@@ -72,7 +78,7 @@
   }
 }
 
-@media (max-width: 577px) {
+@media (max-width: 495px) {
   .time {
     margin-left: 34px;
   }

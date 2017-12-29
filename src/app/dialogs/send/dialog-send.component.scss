@@ -18,12 +18,15 @@ mat-chip.selected {
 .dialog-wrapper {
   font-size: 1.1em;
   position: relative;
-  margin-bottom: 10px;
   line-height: 1.4;
   letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.75);
 
   h2 {
-    margin-top: 0;
+    margin-top: 15px;
+    margin-bottom: 0;
+    color: #000000;
+    display: inline-block;
   }
 
   h3 {
@@ -32,6 +35,9 @@ mat-chip.selected {
 
   .capitalize {
     text-transform: capitalize;
+    margin-left: 1.05em;
+    display: inline-block;
+    line-height: 1.4em;
   }
 
   .currency:after {
@@ -43,13 +49,14 @@ mat-chip.selected {
   }
 
   mat-icon {
-    position: absolute;
-    top: -0.2em;
-    right: -0.2em;
+    display: inline-block;
     width: 1em;
     font-size: 2.5em;
-    height: 1em;
     cursor: pointer;
+    float: right;
+    position: relative;
+    right: -0.5em;
+    top: 0.1em;
   }
 
   .info {
@@ -65,14 +72,15 @@ mat-chip.selected {
     margin-bottom: 5px;
   }
 
-  .discount,
-  .last {
+  .last,
+  .left {
     margin-left: 1.05em;
   }
 
   .last {
     margin-top: 10px;
     font-weight: 500;
+    color: #000000;
   }
 
   .left {
@@ -108,12 +116,31 @@ mat-chip.selected {
 
   button {
     margin-left: 15px;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    padding: 6px 17px 4px;
   }
 
   .error {
     text-align: center;
     display: block;
+    font-size: 0.8em;
   }
+
+  mat-checkbox {
+    font-size: 0.8em;
+  }
+
+  strong {
+    font-weight: 500;
+    color: #000000;
+  }
+
+  .first {
+    margin-bottom: 10px;
+  }
+
 }
 
 @media (max-width: 600px) {

@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
       data: order
     });
     dialogEdit.afterClosed().subscribe((result) => {
+      document.getElementsByTagName('html')[0].setAttribute('style', 'overflow: auto');
       if (result) {
         this.updateItemsList();
       }
@@ -52,6 +53,7 @@ export class HomeComponent implements OnInit {
       data: order
     });
     dialogSend.afterClosed().subscribe((result) => {
+      document.getElementsByTagName('html')[0].setAttribute('style', 'overflow: auto');
       if (result) {
         this.updateItemsList();
       }
